@@ -3,6 +3,8 @@
     height : 50px;
     line-height: 3px;
     background: #33ce78;
+    border-bottom: 1px solid #c4c4c4;  
+
 }
 .kh-container{
     height: calc(100% - 50px);
@@ -39,11 +41,16 @@
     position: absolute;
     left: 50%;
     top: 20%;
+    display: none;
 }
 .kh-container>.left>ul>li>a{
     background: #fff;
     font-weight: bold;
     text-align: center;
     line-height: 3;
+}
+.kh-container>.left .activeHref{
+    background: #33ce78;
+    color: #fff
 }
 

@@ -20,15 +20,19 @@ class Admin extends CI_Controller {
             $this->load->view("admin/dashboard");
         }
     // CATEGORY
-    function category(){
-        $this->load->view("admin/category");
-    }
+        function category(){
+            $this->load->view("admin/category");
+        }
     // PRODUCT
-    function PRODUCT(){
-        $this->load->view("admin/product");
-    }
+        function product(){
+            $this->load->view("admin/product");
+        }
+    // BILL
+        function bill(){
+            $this->load->view("admin/bill");
+        }
     // USER
-    function user(){
-        $this->load->view("admin/user");
-    }        
+        function user(){
+            $this->load->view("admin/user");
+        }        
 }
