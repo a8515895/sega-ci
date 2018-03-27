@@ -18,7 +18,7 @@ class Verify extends CI_Controller {
         $login = $this->M_admin->login(["username"=>$this->input->post("username"),"password"=>$pass]);
         if(!empty($login)){
             $this->session->set_userdata("user",$login);
-            $this->session->set_flashdata("login","toastr.info('Đăng nhập thành công')");
+            $this->session->set_flashdata("login","toastr.success('Đăng nhập thành công')");
             return redirect(base_url("admin/home"));
         }
         $this->session->set_flashdata("login","toastr.error('Đăng nhập thất bại')");

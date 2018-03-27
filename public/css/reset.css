@@ -15,6 +15,9 @@ html,body{
     height : 100%;
     width : 100%;
 }
+.b{
+    font-weight: bold;
+}
 .h100{
     height: 100%;
 }
@@ -27,9 +30,15 @@ html,body{
 .bold{
     font-weight: bold;
 }
-p10{
+.p10{
     padding: 10px;
 }
-m10{
+.m10{
     margin: 10px;
+}
+.lh2{
+    line-height: 2;
+}
+.lh3{
+    line-height: 3;
 }

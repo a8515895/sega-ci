@@ -8,3 +8,39 @@ function loadHref(it){
         $(".wrapper").html(kq)
     });
 }
+function loadHrefAgain(){
+    $.get(url+href,{},function(kq){
+        $("#load").hide();
+        $(".wrapper").html(kq);
+        $(".modal-backdrop").remove();
+    });
+}
+
+function editButton(it,ajax = false,option = {}){
+    if(!ajax){
+        let json = new Array;
+        $.each($(it).parent().parent("tr").children("td"),function(){
+            if($(this).attr("data") != undefined){
+                json[$(this).attr("data")]=$(this).html();
+            }
+        })
+        $("#inputEditName").val(json['name']);
+        $("#inputEditId").val(json['id']);
+    }else{
+        $.get(url+option.url,{id : option.id},function(kq){
+            $(option.html).html(kq);
+        })
+    }    
+}
+function readURL(input,target='#blah') {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $(target)
+                .attr('src', e.target.result)
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
