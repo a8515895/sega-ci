@@ -42,3 +42,9 @@ html,body{
 .lh3{
     line-height: 3;
 }
+.clear{
+    clear: both; 
+}
+.btn{
+    padding: 3px 6px;
+}

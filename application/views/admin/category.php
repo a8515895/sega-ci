@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-md-3 b">Tên danh mục</div>
                             <div class="col-md-9">
-                                <input class="form-control" name="name" id="nameCreate">
+                                <input class="form-control" name="name" id="createName">
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <td data="create_at"><?=date("d/m/Y",$it['create_at'])?></td>
                         <td data="update_by"><?=ucfirst($it['updateName'])?></td>
                         <td data="update_at"><?php if(!empty($it['update_at'])) echo date("d/m/Y",$it['update_at'])?></td>
-                        <td><button class="btn btn-danger">Xóa</button> | <button data-toggle="modal" data-target="#myModal2" class="btn btn-warning" onclick="editButton(this)">Sửa</button></td>
+                        <td><button class="btn btn-danger" onclick="confirmDelete('<?=$it['id']?>','deleteCategory')">Xóa</button> | <button data-toggle="modal" data-target="#myModal2" class="btn btn-warning" onclick="editButton(this)">Sửa</button></td>
                     </tr>
                 <?php } ?>
             </tbody>

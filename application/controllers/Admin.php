@@ -6,8 +6,9 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->load->model('M_admin');
         if(empty($this->session->userdata("user"))){
-            return redirect("verify/index");
+            return redirect(base_url("verify/index"));
         }
+        $this->load->library("my_function");
     }
     function index(){
         $this->load->view("admin/home");
@@ -53,6 +54,7 @@ class Admin extends CI_Controller {
         function insertCategory(){
             $data = array(
                 'name' => $this->input->post("name"),
+                'none_name' => $this->my_function->xoaDau($this->input->post("name"))."-".strtotime('now'),
                 'create_at' => strtotime('now'),
                 'create_by' => $this->session->userdata("user")->id,
             );
@@ -61,10 +63,14 @@ class Admin extends CI_Controller {
         function updateCategory(){
             $data = array(
                 'name' => $this->input->post('name'),
+                'none_name' => $this->my_function->xoaDau($this->input->post("name"))."-".strtotime('now'),
                 'update_at' => strtotime('now'),
                 'update_by' => $this->session->userdata("user")->id,
             );
             $this->M_admin->update("category",$data,['id'=>$this->input->post('id')]);
+        }
+        function deleteCategory(){
+            return $this->M_admin->delete("category",["id"=>$_GET["id"]]);
         }
     // PRODUCT
         function getDetailProduct(){
@@ -85,6 +91,7 @@ class Admin extends CI_Controller {
             if($file != false && !empty($_FILES['img']['name'])){
                 $data = array(
                     'name' => $this->input->post("name"),
+                    'none_name' => $this->my_function->xoaDau($this->input->post("name"))."-".strtotime('now'),
                     'price' => $this->input->post("price"),
                     'id_category'=>$this->input->post("category"),
                     'img' => $file['file_name'],
@@ -111,6 +118,7 @@ class Admin extends CI_Controller {
             }
             $data = array(
                 'name' => $this->input->post("name"),
+                'none_name' => $this->my_function->xoaDau($this->input->post("name"))."-".strtotime('now'),
                 'price' => $this->input->post("price"),
                 'id_category'=>$this->input->post("category"),
                 'update_at' => $now,
@@ -120,6 +128,9 @@ class Admin extends CI_Controller {
             $this->M_admin->update("product",$data,["id"=>$this->input->post("id")]);
             echo 1;
             return;
+        }
+        function deleteProduct(){
+            return $this->M_admin->delete("product",["id"=>$_GET["id"]]);
         }
     // BILL
         function bill(){

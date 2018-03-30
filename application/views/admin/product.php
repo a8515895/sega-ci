@@ -86,7 +86,7 @@
                         <td data="create_at"><?=date("d/m/Y",$it['create_at'])?></td>
                         <td data="update_by"><?=ucfirst($it['updateName'])?></td>
                         <td data="update_at"><?php if(!empty($it['update_at'])) echo date("d/m/Y",$it['update_at'])?></td>
-                        <td><button class="btn btn-danger">Xóa</button> | <button data-toggle="modal" data-target="#myModal2" class="btn btn-warning" onclick="editButton(this,true,{url: 'getDetailProduct',id : '<?=$it['id']?>',html : '#modal-get-product'})">Sửa</button></td>
+                        <td><button class="btn btn-danger" onclick="confirmDelete('<?=$it['id']?>','deleteProduct')">Xóa</button> | <button data-toggle="modal" data-target="#myModal2" class="btn btn-warning" onclick="editButton(this,true,{url: 'getDetailProduct',id : '<?=$it['id']?>',html : '#modal-get-product'})">Sửa</button></td>
                     </tr>
                 <?php } ?>
             </tbody>

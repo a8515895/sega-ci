@@ -39,4 +39,7 @@ class M_admin extends CI_Model {
     public function update($table,$data,$condition){
         return $this->db->update($table,$data,$condition);
     }
+    public function delete($table,$condition){
+        return $this->db->delete($table,$condition);
+    }
 }

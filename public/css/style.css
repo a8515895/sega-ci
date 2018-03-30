@@ -1,74 +1,76 @@
-.kh-header{
+header{
     width: 100%;
-    height : 50px;
-    line-height: 3px;
-    background: #33ce78;
-    border-bottom: 1px solid #c4c4c4;  
-
+    height: 50px;
+    background: #3baa6c;
 }
-.kh-container{
-    height: calc(100% - 50px);
-    width: 100%;
+header>div>ul{
+    margin : 0;
 }
-.kh-container>.left{
-    height: 100%;
-    width: 15%;
-    float: left;
-    background: #d4d4d4;
-    border-right: 1px solid #c4c4c4; 
-
-}
-.kh-container>.right{
-    height: 100%;
-    width: 85%;
-    float: left;
-    background: #fff;
-    padding : 10px;
-    position: relative;
-
-}
-.kh-container>.right>.wrapper{
-    height: 100%;
-    width: 100%;
-}
-.kh-container>.left>ul>li{
-    border-bottom: 1px solid #c4c4c4;  
-}
-#load{
-    z-index : 9999;
-    height :100px;
-    width : 100px;
-    position: absolute;
-    left: 50%;
-    top: 20%;
-    display: none;
-}
-.kh-container>.left>ul>li>a{
-    background: #fff;
-    font-weight: bold;
-    text-align: center;
+header>div>ul>li{
     line-height: 3;
+    float: left;
 }
-.kh-container>.left .activeHref{
-    background: #33ce78;
-    color: #fff
-}
-.close-button-modal{
+header>div>ul>li>a{
     color: #fff;
-    height: 35px;
-    width: 35px;
-    border-radius: 100%;
-    position: absolute;
-    opacity : 1;
-    z-index : 10;
-    right: -9px;
-    top : -9px;
-    border: 3px solid;
+    font-size: 14px;
+    margin-right: 10px;
+    line-height: 3;
+    float: left;
 }
-.add>.close-button-modal{
-    background: #33ce78
+.carousel-inner>.item>img{
+    margin : auto;
 }
-.edit>.close-button-modal{
-    background: #d6d631
+.wrapper-content{
+    height: 450px;
+    width : 90%;
+    background: #fff;
+    margin :auto;
+    margin-bottom : 20px;  
 }
-
+.wrapper-left{
+    height: 100%;
+    width : 20%;
+    float: left;
+    overflow: hidden;
+}
+.wrapper-right{
+    height: 100%;
+    width : 80%;
+    float: left;
+    overflow: hidden;
+}
+.wrapper-right>.wrapper-header{
+    height: 13%;
+    line-height: 4;
+    padding-left: 20px;
+    border-bottom: 1PX solid #eee   
+}
+.wrapper-right>.wrapper-header>a{
+    color: #333;
+    font-weight: 700;
+    font-size: 16px;
+}
+.wrapper-right>.wrapper-contain{
+    height: 87%;
+}
+.wrapper-right>.wrapper-contain>.wrapper-item{
+    width : 20%;
+    border-right: 1PX solid #eee;
+    height: 100%;
+    float: left;
+}
+.wrapper-right>.wrapper-contain>.wrapper-item>.item-content-img{
+    height: 78%;
+    border-bottom: 1PX solid #eee;
+    overflow: hidden;
+    padding: 5px;
+}
+.wrapper-right>.wrapper-contain>.wrapper-item>.item-content-img>.item-img{
+    height: 100%;
+    overflow: hidden;
+}
+.wrapper-right>.wrapper-contain>.wrapper-item>.item-price{
+    padding : 10px;
+    font-weight: 600;
+    height: 12%;
+}

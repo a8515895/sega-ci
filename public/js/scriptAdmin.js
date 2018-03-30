@@ -15,7 +15,25 @@ function loadHrefAgain(){
         $(".modal-backdrop").remove();
     });
 }
-
+function confirmDelete(id,mo){
+    $.confirm({
+        title: 'Xác nhận xóa!',
+        content: 'Xóa sẽ ảnh hưởng rất nhìu, bạn chắc không',
+        type: 'red',
+        typeAnimated: true,
+        buttons: {
+            yes: function () {
+                $.get(url+mo,{id : id},function(kq){
+                    toastr.success("Xóa thành công");
+                    loadHrefAgain();
+                })
+            },
+            cancle: function () {
+                
+            }
+        }
+    })
+}
 function editButton(it,ajax = false,option = {}){
     if(!ajax){
         let json = new Array;

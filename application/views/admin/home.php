@@ -10,12 +10,13 @@
         <link href="<?=base_url("public/css/fontawesome-all.min.css")?>" rel="stylesheet">
         <link href="<?=base_url("public/plugin/dataTable/dataTable.min.css")?>" rel="stylesheet">
         <link href="<?=base_url("public/plugin/select2/select2.min.css")?>" rel="stylesheet">
+        <link href="<?=base_url("public/plugin/confirm/jquery-confirm.min.css")?>" rel="stylesheet">
+        <link href="<?=base_url("public/css/styleAdmin.css")?>" rel="stylesheet">
         <link href="<?=base_url("public/css/reset.css")?>" rel="stylesheet">
-        <link href="<?=base_url("public/css/style.css")?>" rel="stylesheet">
-        
+        <link href="<?=base_url("public/css/styleAdmin.css")?>" rel="stylesheet">        
         <title>Sega Tea</title>
     </head>
-    <body>
+    <body style="overflow : hidden">
         <div class="kh-header"></div>
         <div class="kh-container">
             <div class="left">
@@ -52,7 +53,7 @@
     <script src="<?=base_url("public/plugin/toast/toast.min.js")?>"></script>
     <script src="<?=base_url("public/plugin/dataTable/dataTable.min.js")?>"></script>
     <script src="<?=base_url("public/plugin/select2/select2.min.js")?>"></script>
-
+    <script src="<?=base_url("public/plugin/confirm/jquery-confirm.min.js")?>"></script>
 </html>
 <script>
     const url = '<?=base_url("admin/")?>';
@@ -64,7 +65,7 @@
             $("#load").hide();
             $(".wrapper").html(kq)
         }); 
-      
         <?php if(!empty($this->session->flashdata())){ echo $this->session->flashdata("login"); } ?>
     })
+
 </script>
