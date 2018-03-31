@@ -52,19 +52,30 @@
                             </p>
                         </div>
                         <div style="margin-top : 10px">
-                            <div class="pull-left">
-                                <span style="border : 1px solid #ccc;height : 50px;width : 50px;text-align : center;display : inline-block">+</span>
-                                <span style="border : 1px solid #ccc;height : 50px;width : 100px;text-align : center;display : inline-block">
+                            <div class="pull-left" style="display : flex">
+                                <span style="border : 1px solid #ccc;border-right : 0;height : 50px;width : 50px;text-align : center;display : inline-block;line-height : 3">+</span>
+                                <span style="height : 50px;width : 100px;text-align : center;display : inline-block">
                                     <input style="height : 50px;width : 100px"/>
                                 </span>
-                                <span style="border : 1px solid #ccc;height : 50px;width : 50px;text-align : center;display : inline-block">-</span>
+                                <span style="border : 1px solid #ccc;border-left : 0;height : 50px;width : 50px;text-align : center;display : inline-block;line-height : 3">-</span>
                             </div>
                             <div class="pull-right">
-                                <button class="btn" style="color : #fff;background :#2a2f56">Thêm vào giỏ hàng</button>
+                                <button class="btn" style="color : #fff;background :#2a2f56;font-size : 16px"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5"></div>
+                    <div class="col-md-5">
+                        <div class="w100" style="height : 50px;background : #fba12c">
+                            <div style="height: 100%;width: 50px;border-left: 26px solid #fff;border-right: 23px solid #fba12c;border-top: 24px solid #fff;border-bottom: 25px solid #fba12c;float:left"></div>
+                            <div class="pull-right" style="color : #fff;line-height : 2px;margin-top: 6px;margin-right: 15px;">
+                                <i class="fas fa-shopping-cart fa-2x"></i>
+                                <span style="font-weight : bold">Giỏ Hàng</span>
+                            </div>
+                        </div>
+                        <div class="w100" style="border : 10px solid #f4f4f4">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -24,21 +24,20 @@ class Admin extends CI_Controller {
                 $config['allowed_types']        = "*";
                 $config['max_size']             = 10000;
                 $config['max_width']            = 1024;
-                $config['max_height']           = 768;
+                $config['max_height']           = 1024;
                 $config['file_name']            = $name;
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 if ( ! $this->upload->do_upload('img'))
                 {                
-                    $this->session->set_flashdata("err",$this->upload->display_errors());
-                    return false;
+                    return array("err"=>$this->upload->display_errors());
                 }
                 else
                 {
-                    return $this->upload->data();
+                    return  array("err"=>0,"data"=>$this->upload->data());
                 }                
             }
-            return false;
+            return array("err"=>"Không thấy file ảnh");;
 
         }
     // DASHBOARD
@@ -88,21 +87,25 @@ class Admin extends CI_Controller {
         function insertProduct(){
             $now = strtotime('now');
             $file=$this->uploadImg($this->my_function->xoaDau($this->input->post("name"))."_".$now);
-            if($file != false && !empty($_FILES['img']['name'])){
+            if($file['err'] === 0){
                 $data = array(
                     'name' => $this->input->post("name"),
                     'none_name' => $this->my_function->xoaDau($this->input->post("name"))."-".strtotime('now'),
                     'price' => $this->input->post("price"),
                     'id_category'=>$this->input->post("category"),
-                    'img' => $file['file_name'],
+                    'img' => $file['data']['file_name'],
                     'create_at' => $now,
                     'create_by' => $this->session->userdata("user")->id,
                 );
                 $this->M_admin->insert("product",$data);
-                echo 1;
+                echo json_encode(array(
+                    "err" => 0,                
+                ));                
                 return;
             }
-            echo 0;
+            echo json_encode(array(
+                "err" => $file['err'],
+            ));
         }
         function updateProduct(){
             $now = strtotime('now');  
@@ -110,9 +113,11 @@ class Admin extends CI_Controller {
             if(!empty($_FILES['img']['name'])){
                 $file=$this->uploadImg($this->my_function->xoaDau($this->input->post("name"))."_".$now);
                 if($file != false){
-                    $arrImg=array('img' => $file['file_name']);
+                    $arrImg=array('img' => $file['data']['file_name']);
                 }else{
-                    echo 0;
+                    echo json_encode(array(
+                        "err" => $file['err'],
+                    ));                    
                     return; 
                 }
             }

@@ -1,8 +1,5 @@
 <?php 
     class My_function{
-        function test(){
-            echo "safdav";
-        }
         function xoaDau($str){
             if(!$str) return false;
             $str = trim($str);
@@ -21,5 +18,8 @@
             $str = preg_replace('/[^A-Za-z0-9\-]/', '', $str);      // Removes special chars.
             $str = preg_replace('/-+/', '-', $str);               // Replaces multiple hyphens with single one.	
             return $str;
+        }
+        function ajaxAlert(){
+
         }
     }

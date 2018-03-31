@@ -126,12 +126,13 @@
                 contentType: false, 
                 processData: false,
                 success: function (kq) {
-                    if(kq == 1){
+                    res = $.parseJSON(kq)
+                    console.log(res)
+                    if(res.err == 0){
                         toastr.success("Thêm sản phẩm thành công");
                         loadHrefAgain();
                     }else{
-                        <?php if(!empty($this->session->flashdata())){ echo $this->session->flashdata("err"); } ?>
-                        toastr.error("Thêm sản phẩm thất bại");
+                        toastr.error(res.err);
                     }
                 }
             });
