@@ -32,7 +32,43 @@
                 <div class="clear"></div>
             </div>
         </header>
-        <div style="height:500px;width :90%;margin : auto"></div>
+        <div class="container-default p10">
+            <div class="row" style="height : 350px">
+                <div class="col-md-5 h100">
+                    <div class="content-product-img-detail">
+                        <img class="img" src="<?=base_url('public/img/product/').$product->img?>" />
+                    </div>
+                </div>
+                <div class="col-md-7 h100">
+                    <div class="col-md-7">
+                        <div class="w100 title" style="border-bottom : 1px solid #2a2f56">
+                            <?=$product->name?>
+                        </div>
+                        <div class="w100 title" style="margin-top : 10px;border-bottom : 1px solid #2a2f56">
+                            <p><?=number_format($product->price)?> VND</p>
+                            <p>
+                                <button class="btn" style="background : #bb2460;color : #fff"><i class="fas fa-heart"></i> Yêu thích</button>
+                                <button class="btn btn-info" style="color : #fff"><i class="fas fa-share-alt"></i> Chia sẻ</button>
+                            </p>
+                        </div>
+                        <div style="margin-top : 10px">
+                            <div class="pull-left">
+                                <span style="border : 1px solid #ccc;height : 50px;width : 50px;text-align : center;display : inline-block">+</span>
+                                <span style="border : 1px solid #ccc;height : 50px;width : 100px;text-align : center;display : inline-block">
+                                    <input style="height : 50px;width : 100px"/>
+                                </span>
+                                <span style="border : 1px solid #ccc;height : 50px;width : 50px;text-align : center;display : inline-block">-</span>
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn" style="color : #fff;background :#2a2f56">Thêm vào giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+        </div>
+        <footer></footer>
     </body>
     <script src="<?=base_url("public/js/jquery-3.3.1.min.js")?>"></script>
     <script src="<?=base_url("public/js/bootstrap.min.js")?>"></script>

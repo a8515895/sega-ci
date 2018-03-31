@@ -23,4 +23,10 @@ class M_default extends CI_Model {
         ->get_where("product",$condition)
         ->result_array();
     }
+    public function getDetailProduct($condition=[],$select="product.*"){
+        $query = $this->db;
+        return $query->select($select)
+        ->get_where("product",$condition)
+        ->first_row();
+    }
 }

@@ -86,7 +86,9 @@
                                 <div class="wrapper-item">
                                     <div class="item-content-img">
                                         <div class="item-img">
-                                            <img src="<?=base_url("public/img/product/$pro[img]")?>" style="height: 100%" height="100%">
+                                            <a style="height : 100%" href="<?=base_url('product/').$pro['none_name']?>">
+                                                <img src="<?=base_url("public/img/product/$pro[img]")?>" style="width: 100%;height : 100%" width="100%" height="100%">
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="item-price">
@@ -101,6 +103,7 @@
                 </div>
             <?php } ?>
         </div>
+        <footer></footer>
     </body>
     <script src="<?=base_url("public/js/jquery-3.3.1.min.js")?>"></script>
     <script src="<?=base_url("public/js/bootstrap.min.js")?>"></script>

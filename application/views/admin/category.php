@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-md-3 b">Tên danh mục</div>
                             <div class="col-md-9">
-                                <input class="form-control" name="name" id="createName">
+                                <input class="form-control" name="name" id="createName" required>
                             </div>
                         </div>
                     </div>
@@ -68,8 +68,8 @@
                 <div class="row">
                     <div class="col-md-3 b">Tên <?=$title?></div>
                     <div class="col-md-9">
-                        <input type="hidden" class="form-control" name="name" id="inputEditId">
-                        <input class="form-control" name="name" id="inputEditName">
+                        <input type="hidden" class="form-control" name="name" id="inputEditId" required>
+                        <input class="form-control" name="name" id="inputEditName" required>
                     </div>
                 </div>
             </div>

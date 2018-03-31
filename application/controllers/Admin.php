@@ -87,7 +87,7 @@ class Admin extends CI_Controller {
         }
         function insertProduct(){
             $now = strtotime('now');
-            $file=$this->uploadImg($this->input->post("name")."_".$now);
+            $file=$this->uploadImg($this->my_function->xoaDau($this->input->post("name"))."_".$now);
             if($file != false && !empty($_FILES['img']['name'])){
                 $data = array(
                     'name' => $this->input->post("name"),
@@ -108,7 +108,7 @@ class Admin extends CI_Controller {
             $now = strtotime('now');  
             $arrImg = [];          
             if(!empty($_FILES['img']['name'])){
-                $file=$this->uploadImg($this->input->post("name")."_".$now);
+                $file=$this->uploadImg($this->my_function->xoaDau($this->input->post("name"))."_".$now);
                 if($file != false){
                     $arrImg=array('img' => $file['file_name']);
                 }else{
