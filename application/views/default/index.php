@@ -15,23 +15,7 @@
         <title>Sega Tea</title>
     </head>
     <body style="background : url(<?=base_url('public/img/background-tea-default.png')?>) center repeat-y">
-        <header>
-            <div style="width : 70%;margin : auto">
-                <ul>
-                    <li><a href="javascript:void(0)"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="javascript:void(0)"><i class="fas fa-phone"></i> Hotline: 1900xxxx</a></li>
-                    <li><a href="javascript:void(0)"><i class="fas fa-envelope-open"></i> Mail: axxxx@gmail.com</a></li>
-                </ul>
-                <ul class="pull-right">
-                    <li><a href="javascript:void(0)"><i class="fas fa-user-plus"></i> Đăng ký | </a></li>
-                    <li><a href="javascript:void(0)"><i class="fas fa-user-md"></i> CSKH | </a></li>
-                    <li><a href="javascript:void(0)"><i class="fas fa-mobile-alt"></i> Liên hệ | </a></li>
-                    <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-
-                </ul>
-                <div class="clear"></div>
-            </div>
-        </header>
+        <?php $this->load->view('default/header'); ?>
         <div style="width : 100%;margin : 10px auto">
             <div id="carousel-example-generic"  class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
@@ -94,7 +78,7 @@
                                     <div class="item-price">
                                         <a href="javascript:void(0)"><?=$pro['name']?></a>
                                         <a href="javascript:void(0)" style="color : red"><?=number_format($pro['price'])?></a>
-                                        <a class="btn btn-success pull-right" href="javascript:void(0)">Thêm giỏ hàng</a>
+                                        <a class="btn btn-success pull-right" href="javascript:void(0)" onclick="addCart('<?=$pro['id']?>',true)">Thêm giỏ hàng</a>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -103,7 +87,7 @@
                 </div>
             <?php } ?>
         </div>
-        <footer></footer>
+        <?php $this->load->view('default/footer'); ?>
     </body>
     <script src="<?=base_url("public/js/jquery-3.3.1.min.js")?>"></script>
     <script src="<?=base_url("public/js/bootstrap.min.js")?>"></script>
@@ -112,16 +96,11 @@
     <script src="<?=base_url("public/plugin/select2/select2.min.js")?>"></script>
 </html>
 <script>
-    const url = '<?=base_url("admin/")?>';
+    const url = '<?=base_url("home/")?>';
 </script>
-<script src="<?=base_url("public/js/scriptAdmin.js")?>"></script>
+<script src="<?=base_url("public/js/scriptDefault.js")?>"></script>
 <script>
-    $(document).ready(function(){
-        $.get(url+'dashboard',{},function(kq){
-            $("#load").hide();
-            $(".wrapper").html(kq)
-        }); 
-      
-        <?php if(!empty($this->session->flashdata())){ echo $this->session->flashdata("login"); } ?>
+    $(document).ready(function(){      
+        <?php if(!empty($this->session->flashdata())){ echo $this->session->flashdata("err"); } ?>
     })
 </script>

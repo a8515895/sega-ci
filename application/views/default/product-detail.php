@@ -15,32 +15,16 @@
         <title>Sega Tea</title>
     </head>
     <body style="background : url(<?=base_url('public/img/background-tea-default.png')?>) center repeat-y">
-        <header>
-            <div style="width : 70%;margin : auto">
-                <ul>
-                    <li><a href="javascript:void(0)"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="javascript:void(0)"><i class="fas fa-phone"></i> Hotline: 1900xxxx</a></li>
-                    <li><a href="javascript:void(0)"><i class="fas fa-envelope-open"></i> Mail: axxxx@gmail.com</a></li>
-                </ul>
-                <ul class="pull-right">
-                    <li><a href="javascript:void(0)"><i class="fas fa-user-plus"></i> Đăng ký | </a></li>
-                    <li><a href="javascript:void(0)"><i class="fas fa-user-md"></i> CSKH | </a></li>
-                    <li><a href="javascript:void(0)"><i class="fas fa-mobile-alt"></i> Liên hệ | </a></li>
-                    <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-
-                </ul>
-                <div class="clear"></div>
-            </div>
-        </header>
+        <?php $this->load->view('default/header'); ?>
         <div class="container-default p10">
             <div class="row" style="height : 350px">
-                <div class="col-md-5 h100">
+                <div class="col-md-4 h100">
                     <div class="content-product-img-detail">
                         <img class="img" src="<?=base_url('public/img/product/').$product->img?>" />
                     </div>
                 </div>
-                <div class="col-md-7 h100">
-                    <div class="col-md-7">
+                <div class="col-md-8 h100">
+                    <div class="col-md-6">
                         <div class="w100 title" style="border-bottom : 1px solid #2a2f56">
                             <?=$product->name?>
                         </div>
@@ -55,16 +39,16 @@
                             <div class="pull-left" style="display : flex">
                                 <span style="border : 1px solid #ccc;border-right : 0;height : 50px;width : 50px;text-align : center;display : inline-block;line-height : 3">+</span>
                                 <span style="height : 50px;width : 100px;text-align : center;display : inline-block">
-                                    <input style="height : 50px;width : 100px"/>
+                                    <input style="height : 50px;width : 100px;text-align : right" id="qty" type="number" />
                                 </span>
                                 <span style="border : 1px solid #ccc;border-left : 0;height : 50px;width : 50px;text-align : center;display : inline-block;line-height : 3">-</span>
                             </div>
                             <div class="pull-right">
-                                <button class="btn" style="color : #fff;background :#2a2f56;font-size : 16px"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                <button class="btn" style="color : #fff;background :#2a2f56;font-size : 16px" onclick="addCart('<?=$product->id?>')"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <div class="w100" style="height : 50px;background : #fba12c">
                             <div style="height: 100%;width: 50px;border-left: 26px solid #fff;border-right: 23px solid #fba12c;border-top: 24px solid #fff;border-bottom: 25px solid #fba12c;float:left"></div>
                             <div class="pull-right" style="color : #fff;line-height : 2px;margin-top: 6px;margin-right: 15px;">
@@ -72,14 +56,21 @@
                                 <span style="font-weight : bold">Giỏ Hàng</span>
                             </div>
                         </div>
-                        <div class="w100" style="border : 10px solid #f4f4f4">
-                            
+                        <div class="w100" style="border : 10px solid #f4f4f4;min-height : 250px">
+                            <?php if($this->cart->total_items()==0){ ?>
+                                <div style="margin : 50px auto;width : fit-content;">
+                                    <i style="color : #c4c4c4" class="fas fa-cart-arrow-down fa-6x"></i>
+                                    <div style="color : #c4c4c4">GIỎ HÀNG TRỐNG</div>
+                                </div>
+                            <?php }else{ ?>
+                                <div id="cartAjaxView"></div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer></footer>
+        <?php $this->load->view('default/footer'); ?>
     </body>
     <script src="<?=base_url("public/js/jquery-3.3.1.min.js")?>"></script>
     <script src="<?=base_url("public/js/bootstrap.min.js")?>"></script>
@@ -88,16 +79,17 @@
     <script src="<?=base_url("public/plugin/select2/select2.min.js")?>"></script>
 </html>
 <script>
-    const url = '<?=base_url("admin/")?>';
+    const url = '<?=base_url("home/")?>';
 </script>
-<script src="<?=base_url("public/js/scriptAdmin.js")?>"></script>
+<script src="<?=base_url("public/js/scriptDefault.js")?>"></script>
 <script>
     $(document).ready(function(){
-        $.get(url+'dashboard',{},function(kq){
-            $("#load").hide();
-            $(".wrapper").html(kq)
-        }); 
-      
-        <?php if(!empty($this->session->flashdata())){ echo $this->session->flashdata("login"); } ?>
+        $.ajax({
+            method : 'get',
+            url : url+'ajaxCartView',
+            success : function(kq){
+                $("#cartAjaxView").html(kq);
+            }
+        })
     })
 </script>
