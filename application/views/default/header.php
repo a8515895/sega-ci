@@ -6,7 +6,13 @@
             <li><a href="javascript:void(0)"><i class="fas fa-envelope-open"></i> Mail: axxxx@gmail.com</a></li>
         </ul>
         <ul class="pull-right">
-            <li><a href="javascript:void(0)"><i class="fas fa-user-plus"></i> Đăng ký | </a></li>
+            <li>
+                <?php if(empty($this->session->userdata('email'))){ ?>
+                    <a href="<?=base_url("verify")?>"><i class="fas fa-user-plus"></i> Đăng ký và Đăng nhập | </a>
+                <?php }else{ ?>
+                    <a href="<?=base_url("info/").$this->session->userdata('id')?>"><i class="fas fa-user"></i> <?=empty($this->session->userdata('name')) ? $this->session->userdata('email') : $this->session->userdata('name')?> | </a>
+                <?php } ?>
+            </li>
             <li><a href="javascript:void(0)"><i class="fas fa-user-md"></i> CSKH | </a></li>
             <li><a href="javascript:void(0)"><i class="fas fa-mobile-alt"></i> Liên hệ | </a></li>
             <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i> | </a></li>

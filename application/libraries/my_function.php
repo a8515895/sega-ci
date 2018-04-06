@@ -22,4 +22,28 @@
         function ajaxAlert(){
 
         }
+        function DECtoDMS($dec)
+        {        
+            $lat=trim(explode(",",$dec)[0]);
+            $latD = substr($lat,-1);
+            $degreesLat = explode(" ",$lat)[0];
+            $minutesLat = explode(" ",$lat)[1];
+            $secondsLat = rtrim(explode(" ",$lat)[2],substr(explode(" ",$lat)[2],-1));
+            if($latD == "N" || $latD == "E"){
+                $decimalLat = $degreesLat + ($minutesLat / 60) + ($secondsLat / 3600);
+            }else{
+                $decimalLat = ($degreesLat + ($minutesLat / 60) + ($secondsLat / 3600)) * -1;
+            }
+            $lng = trim(explode(",",$dec)[1]);
+            $lngD = substr($lng,-1);
+            $degreesLng = explode(" ",$lng)[0];
+            $minutesLng = explode(" ",$lng)[1];
+            $secondsLng = rtrim(explode(" ",$lng)[2],substr(explode(" ",$lng)[2],-1));;
+            if($lngD == "N" || $lngD == "E"){
+                $decimalLng = $degreesLng + ($minutesLng / 60) + ($secondsLng / 3600);
+            }else{
+                $decimalLng = ($degreesLng + ($minutesLng / 60) + ($secondsLng / 3600)) * -1;
+            }
+            return array('lat'=>round($decimalLat,6),'lng'=>round($decimalLng,6));
+        } 
     }
