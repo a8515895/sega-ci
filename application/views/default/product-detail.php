@@ -39,14 +39,14 @@
                             </div>
                             <div style="margin-top : 10px">
                                 <div class="pull-left" style="display : flex">
-                                    <span style="border : 1px solid #ccc;border-right : 0;height : 50px;width : 50px;text-align : center;display : inline-block;line-height : 3">+</span>
-                                    <span style="height : 50px;width : 100px;text-align : center;display : inline-block">
-                                        <input style="height : 50px;width : 100px;text-align : right" id="qty" type="number" />
+                                    <span id="btnPlus" style="border : 1px solid #ccc;border-right : 0;height : 50px;width : 50px;text-align : center;display : inline-block;line-height : 3;cursor : pointer">+</span>
+                                    <span  style="height : 50px;width : 100px;text-align : center;display : inline-block">
+                                        <input style="height : 50px;width : 100px;text-align : right" id="qty" type="number" value='1' min='1'/>
                                     </span>
-                                    <span style="border : 1px solid #ccc;border-left : 0;height : 50px;width : 50px;text-align : center;display : inline-block;line-height : 3">-</span>
+                                    <span id="btnMinus" style="border : 1px solid #ccc;border-left : 0;height : 50px;width : 50px;text-align : center;display : inline-block;line-height : 3;cursor : pointer">-</span>
                                 </div>
                                 <div class="pull-right">
-                                    <button class="btn" style="color : #fff;background :#2a2f56;font-size : 16px" onclick="addCart('<?=$product->id?>')"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                    <button id="btnAddCart" class="btn" style="color : #fff;background :#2a2f56;font-size : 16px" onclick="addCart('<?=$product->id?>',$('#qty').val())"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         </div>
@@ -59,14 +59,9 @@
                                 </div>
                             </div>
                             <div class="w100" style="border : 10px solid #f4f4f4;min-height : 250px">
-                                <?php if($this->cart->total_items()==0){ ?>
-                                    <div style="margin : 50px auto;width : fit-content;">
-                                        <i style="color : #c4c4c4" class="fas fa-cart-arrow-down fa-6x"></i>
-                                        <div style="color : #c4c4c4">GIỎ HÀNG TRỐNG</div>
-                                    </div>
-                                <?php }else{ ?>
-                                    <div id="cartAjaxView"></div>
-                                <?php } ?>
+                                <div id="cartAjaxView">
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -93,6 +88,28 @@
             success : function(kq){
                 $("#cartAjaxView").html(kq);
             }
+        })
+        $("#btnAddCart").click(function(){
+            $.ajax({
+                method : 'get',
+                url : url+'ajaxCartView',
+                success : function(kq){
+                    $("#cartAjaxView").html(kq);
+                }
+            })
+        })
+        $("#btnPlus").click(function(){
+            var val=$("#qty").val();
+            val++;
+            $("#qty").val(val);
+        })
+        $("#btnMinus").click(function(){
+            var val=$("#qty").val();
+            if(val > 1){
+                val--;
+                $("#qty").val(val);
+            }
+
         })
     })
 </script>

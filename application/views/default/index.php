@@ -78,7 +78,7 @@
                                     <div class="item-price">
                                         <a href="javascript:void(0)"><?=$pro['name']?></a>
                                         <a href="javascript:void(0)" style="color : red"><?=number_format($pro['price'])?></a>
-                                        <a class="btn btn-success pull-right" href="javascript:void(0)" onclick="addCart('<?=$pro['id']?>',true)">Thêm giỏ hàng</a>
+                                        <a class="btn btn-success pull-right" href="javascript:void(0)" onclick="addCart('<?=$pro['id']?>',1)">Thêm giỏ hàng</a>
                                     </div>
                                 </div>
                             <?php } ?>

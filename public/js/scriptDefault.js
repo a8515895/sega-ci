@@ -1,6 +1,6 @@
-function addCart(id,index=false){
-    if(index)  qty = $("#qty").val();
-    else qty = 1;
+function addCart(id,qty){
+    alert(qty);
+    if(qty == '' || qty == null || qty < 1) qty = 1;
     $.ajax({
         method : 'POST',
         url : url+'addCart',
@@ -11,6 +11,32 @@ function addCart(id,index=false){
             toastr.success("Thêm giỏ hàng thành công");
         }
     })
+}
+function clickForm(idForm,urlAjax,option){
+    var form = $('form#'+idForm);
+    var formData = new FormData(form[0]);
+    $.ajax({
+        type: 'post',
+        url: url+urlAjax,
+        data: formData,
+        contentType: false, 
+        processData: false,
+        success: function (kq) {                    
+            if(kq == 0) {
+                if(option.url == null ||  option.url == ''){
+                    window.location.href = url;
+                }
+                else{
+                    if(option.url != 'none')
+                    window.location.href = option.url;                    
+                }
+            }
+            else{
+                res=$.parseJSON(kq);
+                toastr.error(res.err,option.title);
+            }
+        }
+    });
 }
 function loadCountCartItem(){
     $.ajax({
@@ -39,4 +65,8 @@ function deleteItem(rowid){
             location.reload();
         }
     })
+}
+function loadUrl(urlLoad = ''){
+    if(urlLoad == '' || urlLoad == null) urlLoad = url
+    window.location.href = urlLoad;                    
 }

@@ -96,7 +96,10 @@
                 contentType: false, 
                 processData: false,
                 success: function (kq) {
-                    if(kq == 0) toastr.error("Đăng nhập thất bại");
+                    if(kq != 0){
+                        res = $.parseJson(kq);
+                        toastr.error(res.err,"Đăng nhập thất bại");
+                    } 
                     else {
                         toastr.success("Đăng nhập thành công");
                         window.location.href = url;

@@ -29,13 +29,16 @@ class M_default extends CI_Model {
         ->get_where("product",$condition)
         ->first_row();
     }
-    public function getListProvince(){
-        return $this->db->get_where("province")->result_array();
+    public function getListProvince($condition=[]){
+        return $this->db->get_where("province",$condition)->result_array();
     }
-    public function getListDistrict($condition){
+    public function getProfileCustomer($condition=[]){
+        return $this->db->get_where("customer",$condition)->first_row();
+    }
+    public function getListDistrict($condition=[]){
         return $this->db->get_where("district",$condition)->result_array();
     }
-    public function getListWard($condition){
+    public function getListWard($condition=[]){
         return $this->db->get_where("ward",$condition)->result_array();
     }
     public function insert($table,$data){
